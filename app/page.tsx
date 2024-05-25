@@ -1,113 +1,121 @@
-import Image from "next/image";
+import Image from 'next/image'
+
+import { Card } from '@/components/card'
+
+import Burger from '../public/main_burger.png'
+
+const products = [
+  {
+    id: 'a973e425-e803-4d20-bbbc-4b85f434305e',
+    name: 'X-Salada',
+    description:
+      'Pao, hamburger, queijo, alface, tomate e mussarela oadnhvoadnvoandviondaoivunaoidvnadon',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: 'ff00eb07-e937-4153-9199-fd1149e5061f',
+  },
+  {
+    id: 'f7c91b94-a837-400b-b3ef-fd27a453bc31',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: 'f9b28612-9ff9-4e2e-82bc-ccb77cc1fc11',
+  },
+  {
+    id: 'd5df6a55-f800-4136-9991-6ce031d80d21',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: 'b235a9b9-971e-45f7-8277-cbf685f254b8',
+  },
+  {
+    id: '1216864e-4323-4d30-93f2-7504a0cbc3e4',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: '7b428783-8bfa-4514-9782-51a09d3befde',
+  },
+  {
+    id: '4b07c7a0-b479-4256-8fc1-93bad4911b0d',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: '44924c4c-55cd-4b23-b83a-56bc4ac5aa09',
+  },
+  {
+    id: 'c4afb197-405e-4f1b-9d2c-41823f2183ae',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: 'e93eb066-df96-4706-a68a-f4c79946b1b6',
+  },
+  {
+    id: 'db0ac549-8964-40fc-b81c-e405a9c25973',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: 'b4c2e78b-c3ca-46a1-ade5-669e5ee6e776',
+  },
+  {
+    id: '5cd1b5bd-50a4-41bd-a1b7-1a7aae7fec67',
+    name: 'X-Salada',
+    description: 'Pao, hamburger, queijo, alface, tomate e mussarela',
+    image: '#',
+    priceInCents: 2290,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    restaurant: 'e034d5f5-7e11-4305-868f-cfb54ee5f35b',
+  },
+]
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex flex-col items-center gap-6">
+      <div className="flex w-11/12 max-w-[90rem] justify-around rounded-xl bg-[url('../public/backgroundBurger.png')] px-12 py-4">
+        <div className="mt-[22rem] flex flex-col gap-3">
+          <p className="space-x-4 text-justify font-poppins text-5xl text-primary-foreground">
+            Call us!
+          </p>
+          <p className="space-x-4 text-justify font-poppins text-3xl text-primary-foreground">
+            Enjoy the best Burger!
+          </p>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src={Burger.src}
+          width={300}
+          height={900}
+          alt="Burger"
+          className="mt-8"
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="my-10 flex flex-col space-y-5">
+        <p className="font-roboto text-3xl">Products</p>
+        <div className="grid grid-flow-row grid-cols-6 gap-5">
+          {products.map((product) => {
+            return <Card key={product.id} product={product} />
+          })}
+        </div>
       </div>
-    </main>
-  );
+    </div>
+  )
 }
