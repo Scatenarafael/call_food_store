@@ -19,7 +19,7 @@ interface CardProps {
 
 export function Card({ product }: CardProps) {
   return (
-    <div className="relative h-[25rem] w-[14rem] rounded-lg border-2 border-black bg-primary/20">
+    <div className="relative h-[25rem] w-[14rem] rounded-lg border-2 border-black bg-primary/20 dark:bg-amber-500">
       <div className="h-4/6 w-full object-fill">
         {!product.image || product.image === '#' ? (
           <Image
@@ -44,7 +44,7 @@ export function Card({ product }: CardProps) {
         <p className="line-clamp-3 text-justify text-xs">
           {product.description}
         </p>
-        <p className="absolute left-[140px] top-[240px] z-50 rounded-lg bg-primary p-2 text-xl text-primary-foreground">
+        <p className="absolute left-[140px] top-[240px] z-50 rounded-lg bg-primary p-2 text-xl">
           {(product.priceInCents / 100).toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL',

@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
 import { Poppins, Roboto, Roboto_Mono } from 'next/font/google'
 
-import { Header } from '@/components/header'
+import { ThemeProvider } from '@/contexts/providers/ThemeProvider'
 import { cn } from '@/lib/utils'
 
 const roboto = Roboto({
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn([
           'dark:bg-zinc-800',
@@ -48,8 +48,14 @@ export default function RootLayout({
           poppins.variable,
         ])}
       >
-        <Header />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
