@@ -12,7 +12,7 @@ export async function socialRedirectUrl({
   redirect,
 }: SocialRedirectProps) {
   try {
-    const url = `${process.env.NEXT_PUBLIC_HOST}/api/o/${provider}/?redirect_uri=${
+    const url = `${process.env.NEXT_PUBLIC_API_HOST}/api/o/${provider}/?redirect_uri=${
       process.env.NODE_ENV === 'production'
         ? process.env.NEXT_PUBLIC_REDIRECT_URL
         : 'http://localhost:3000'
@@ -20,6 +20,7 @@ export async function socialRedirectUrl({
 
     const response = await api.get(url, {
       headers: { Accept: 'application/json' },
+      withCredentials: true,
     })
 
     // eslint-disable-next-line camelcase

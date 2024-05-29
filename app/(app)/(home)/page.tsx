@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { AuthMe } from '@/components/auth-me'
 import { Card } from '@/components/card'
 import Burger from '@/public/main_burger.png'
 
@@ -90,6 +91,7 @@ const products = [
 export default function Home() {
   return (
     <div className="flex flex-col items-center gap-6">
+      <AuthMe />
       <div className="flex w-11/12 max-w-[90rem] justify-around rounded-xl bg-[url('../public/backgroundBurger.png')] px-12 py-4">
         <div className="mt-[22rem] flex flex-col gap-3">
           <p className="space-x-4 text-justify font-poppins text-5xl">
