@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
 import { Poppins, Roboto, Roboto_Mono } from 'next/font/google'
 
+import { Toaster } from '@/components/ui/sonner'
+import { AuthProvider } from '@/contexts/AuthContext'
 import { ThemeProvider } from '@/contexts/providers/ThemeProvider'
 import { cn } from '@/lib/utils'
 
@@ -42,20 +44,23 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn([
-          'dark:bg-zinc-800',
+          'h-screen dark:bg-zinc-800',
           roboto.variable,
           robotoMono.variable,
           poppins.variable,
         ])}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )
