@@ -23,6 +23,8 @@ export async function socialRedirectUrl({
       withCredentials: true,
     })
 
+    console.log('response >>> ', response)
+
     // eslint-disable-next-line camelcase
     const { authorization_url } = response.data
 

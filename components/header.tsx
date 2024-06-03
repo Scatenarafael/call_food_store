@@ -1,7 +1,13 @@
 import { ShoppingCart, User } from 'lucide-react'
 
+import { AccountMenuContent } from './account-menu-content'
 import { ModeToggle } from './toggle-theme'
 import { Button } from './ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 
 export function Header() {
   return (
@@ -13,9 +19,16 @@ export function Header() {
         <Button variant="ghost" className="group">
           <ShoppingCart />
         </Button>
-        <Button variant="ghost" className="group">
-          <User />
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="group">
+              <User />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <AccountMenuContent />
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   )

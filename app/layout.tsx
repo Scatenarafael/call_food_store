@@ -7,6 +7,7 @@ import { Poppins, Roboto, Roboto_Mono } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ThemeProvider } from '@/contexts/providers/ThemeProvider'
+import Providers from '@/lib/tanstack-query'
 import { cn } from '@/lib/utils'
 
 const roboto = Roboto({
@@ -50,17 +51,19 @@ export default function RootLayout({
           poppins.variable,
         ])}
       >
-        <AuthProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </AuthProvider>
+        <Providers>
+          <AuthProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </AuthProvider>
+        </Providers>
       </body>
     </html>
   )

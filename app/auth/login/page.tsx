@@ -6,14 +6,27 @@ export default function Login() {
   async function continueWithGoogleLogin() {
     await socialRedirectUrl({ provider: 'google-oauth2', redirect: 'google' })
   }
+  async function continueWithFacebookLogin() {
+    await socialRedirectUrl({ provider: 'facebook', redirect: 'facebook' })
+  }
   return (
-    <Button
-      variant="destructive"
-      onClick={() => {
-        continueWithGoogleLogin()
-      }}
-    >
-      Google
-    </Button>
+    <div>
+      <Button
+        variant="destructive"
+        onClick={() => {
+          continueWithGoogleLogin()
+        }}
+      >
+        Google
+      </Button>
+      <Button
+        variant="default"
+        onClick={() => {
+          continueWithFacebookLogin()
+        }}
+      >
+        Facebook
+      </Button>
+    </div>
   )
 }
