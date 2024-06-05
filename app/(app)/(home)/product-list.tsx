@@ -30,10 +30,12 @@ export type ProductsResponseProps = {
 export function ProductList() {
   const { data: products, isLoading } = useQuery({
     queryKey: ['products'],
+
     queryFn: async () => {
       const response = await api.get<ProductsResponseProps>('products')
       return response.data
     },
+    retry: 3,
   })
 
   return (

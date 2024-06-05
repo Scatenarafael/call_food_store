@@ -1,12 +1,13 @@
+/* eslint-disable simple-import-sort/imports */
 'use client'
 
 import { AxiosError } from 'axios'
-import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import {
-  createContext,
   Dispatch,
   ReactNode,
   SetStateAction,
+  createContext,
   useState,
 } from 'react'
 
@@ -26,19 +27,10 @@ type AuthProviderProps = {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [auth, setAuth] = useState(false)
-  // const router = useRouter()
-  const pathName = usePathname()
 
-  async function logoutRedirect() {
-    console.log('pathName >>> ', pathName)
-    if (pathName !== '/auth/login') {
-      logout().then(() => {
-        window.location.replace(
-          `${process.env.NEXT_PUBLIC_STORE_HOST}/auth/login`,
-        )
-      })
-    }
-  }
+  const router = useRouter()
+
+  let refreshing = false
 
   api.interceptors.response.use(
     (response) => {
@@ -46,30 +38,31 @@ export function AuthProvider({ children }: AuthProviderProps) {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (error: AxiosError<any>) => {
-      let redirect
-
-      if (pathName !== '/auth/login') {
-        redirect = true
-      }
-
       if (
         error.response?.status === 401 &&
         error.response.data.detail ===
           'Authentication credentials were not provided.'
       ) {
-        api
-          .post('/jwt/refresh/')
-          .then()
-          .catch(() => {
-            window.location.replace(
-              `${process.env.NEXT_PUBLIC_STORE_HOST}/auth/login`,
-            )
-          })
-      } else {
-        if (redirect) {
-          logoutRedirect()
+        if (!refreshing) {
+          refreshing = true
+          api
+            .post('/jwt/refresh/')
+            .then((response) => {
+              if (response.status >= 400) {
+                router.push('/auth/login')
+              }
+            })
+            .catch(() => {
+              router.push('/auth/login')
+            })
         }
-        redirect = false
+      } else {
+        if (!refreshing) {
+          refreshing = true
+          logout().then(() => {
+            router.push('/auth/login')
+          })
+        }
       }
     },
   )

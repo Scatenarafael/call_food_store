@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 
 // eslint-disable-next-line camelcase
-import { Header } from '@/components/header'
 
 // sans: ['var(--font-inter)'],
 // roboto: ['var(--font-roboto)'],
@@ -16,15 +15,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default function AppLayout({
+export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <div className="font-roboto">
-      <Header />
-      {children}
-    </div>
-  )
+  return <div className="h-screen font-roboto">{children}</div>
 }
