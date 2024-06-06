@@ -20,9 +20,8 @@ export default function useActivateUser(
             `${process.env.NEXT_PUBLIC_STORE_HOST}/auth/login`,
           )
         })
-        .catch((e) => {
+        .catch(() => {
           toast.error('Failed to activate user')
-          console.log('use-activate >> error', e)
           window.location.replace(
             `${process.env.NEXT_PUBLIC_STORE_HOST}/auth/login`,
           )
